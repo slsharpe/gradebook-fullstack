@@ -4,27 +4,23 @@
   <meta charset="UTF-8">
   <title>Stephanie Salazar Gradebook</title>
   <style>
-    body { font-family: Arial; padding: 20px; }
+    body { font-family: Arial, sans-serif; padding: 20px; }
     table { width: 100%; border-collapse: collapse; }
     th, td { border: 1px solid #ccc; padding: 10px; }
-    th { background: #f2f2f2; }
+    th { background-color: #f2f2f2; }
   </style>
 </head>
-<body>
-
-  <h1>Gradebook</h1>
+<body onload="fetchGradeData()">
+  <h1>Stephanie Salazar's Gradebook</h1>
 
   <table>
     <thead>
       <tr>
-        <th>Stephanie Salazar</th>
-        <th>Assignment 1</th>
-        <th>Assignment 2</th>
-        <th>Assignment 3</th>
+        <th>Name</th>
+        <th>Grade</th>
       </tr>
     </thead>
-    <tbody id="gradebook-body">
-      <!-- JS will fill this later -->
+    <tbody id="gradebook">
     </tbody>
   </table>
 
