@@ -1,6 +1,6 @@
 const express = require("express");
 const { Pool } = require("pg");
-const path = require("path");
+const path = require("path"); // 
 
 const app = express();
 const port = 3000;
@@ -19,7 +19,7 @@ app.get("/api/grades", async (req, res) => {
     const result = await pool.query("SELECT * FROM grades");
     res.json(result.rows);
   } catch (err) {
-    console.error("Database error:", err);
+    console.error("Database error:", err); // 
     res.status(500).send("Error retrieving grades");
   }
 });
