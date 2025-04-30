@@ -9,9 +9,10 @@ const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "gradebook",
-  password: "", // 
+  password: "mypassword", // 
   port: 5432
 });
+
 
 app.use(express.static(path.join(__dirname, "public")));
 
