@@ -1,33 +1,29 @@
-function fetchGradeData() {
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function () {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status !== 200) {
-        console.error(`Could not get grades. Status: ${xhr.status}`);
-      } else {
-        let data = JSON.parse(xhr.responseText);
-        populateGradebook(data);
-      }
-    }
-  };
-  xhr.open("GET", "/api/grades", true);
-  xhr.send();
-}
+const express = require("express");
+const { Pool } = require("pg");
+const path = require("path");
 
-function populateGradebook(data) {
-  const tableBody = document.getElementById("gradebook");
+const app = express();
+const port = 3000;
 
-  data.forEach(function (entry) {
-    let row = document.createElement("tr");
+const pool = new Pool({
+  user: "postgres",
+  host: "localhost",
+  database: "gradebook",
+  port: 5432
+});
 
-    let nameCell = document.createElement("td");
-    nameCell.textContent = `${entry.last_name}, ${entry.first_name}`;
+app.use(express.static(path.join(__dirname, "public")));
 
-    let gradeCell = document.createElement("td");
-    gradeCell.textContent = entry.total_grade;
+app.get("/api/grades", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT * FROM grades");
+    res.json(result.rows);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error retrieving grades");
+  }
+});
 
-    row.appendChild(nameCell);
-    row.appendChild(gradeCell);
-    tableBody.appendChild(row);
-  });
-}
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
