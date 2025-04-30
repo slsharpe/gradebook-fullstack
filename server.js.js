@@ -5,7 +5,6 @@ const path = require("path");
 const app = express();
 const port = 3000;
 
-// PostgreSQL pool with NO password
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
