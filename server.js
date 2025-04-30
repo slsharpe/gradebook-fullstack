@@ -9,6 +9,7 @@ const pool = new Pool({
   user: "postgres",
   host: "localhost",
   database: "gradebook",
+  password: "", // 
   port: 5432
 });
 
