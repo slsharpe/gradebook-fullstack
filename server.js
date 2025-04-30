@@ -1,6 +1,6 @@
 const express = require("express");
 const { Pool } = require("pg");
-const path = require("path"); // 
+const path = require("path");
 
 const app = express();
 const port = 3000;
@@ -8,8 +8,8 @@ const port = 3000;
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
-  database: "gradebook",
-  password: "mypassword", // 
+  database: "gradebook",   
+  password: "mypassword",  
   port: 5432
 });
 
@@ -21,7 +21,7 @@ app.get("/api/grades", async (req, res) => {
     const result = await pool.query("SELECT * FROM grades");
     res.json(result.rows);
   } catch (err) {
-    console.error("Database error:", err); // 
+    console.error("Database error:", err);
     res.status(500).send("Error retrieving grades");
   }
 });
@@ -29,3 +29,4 @@ app.get("/api/grades", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
