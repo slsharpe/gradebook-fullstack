@@ -1,16 +1,16 @@
 {
   "name": "gradebook-fullstack",
   "version": "1.0.0",
-  "main": "gradebook.js",
+  "description": "Stephanie Salazar's fullstack gradebook project",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Stephanie Salazar",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "express": "^5.1.0",
     "pg": "^8.15.6"
   }
 }
+
